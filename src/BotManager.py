@@ -17,7 +17,7 @@ class BotManager(Manager):
     def __init__(self):
         config_manager = ModulesLoader.load_manager("config")
 
-        settings = config_manager.load_settings_file("tg-bot")
+        settings = config_manager.load_settings_file("token", "bot")
 
         self.bot = telegram.Bot(settings["token"])
         self.updater = Updater(settings["token"], use_context=True)
