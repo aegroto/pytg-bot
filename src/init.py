@@ -1,6 +1,8 @@
 import logging
 
-from modules.bot.BotManager import BotManager
+from .BotManager import BotManager
+
+logger = logging.getLogger(__name__) 
 
 def initialize():
     logging.info("Initializing bot module...")
@@ -8,7 +10,9 @@ def initialize():
     BotManager.initialize()
 
 def connect():
-    pass
+    logging.info("Connecting bot module...")
+
+    load_manager().connect()
 
 def load_manager():
     return BotManager.load() 
