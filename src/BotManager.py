@@ -3,19 +3,12 @@ import telegram, logging, time
 from telegram.ext import Updater
 from telegram.error import BadRequest, RetryAfter
 
-from modules.pytg.Manager import Manager
-from modules.pytg.load import manager
+from pytg.Manager import Manager
+from pytg.load import manager
 
 class BotManager(Manager):
-    @staticmethod
-    def initialize():
-        BotManager.__instance = BotManager()
-
-    @staticmethod
-    def load():
-        return BotManager.__instance
-
     def __init__(self):
+        super().__init__()
         settings = manager("config").load_settings("bot", "token")
 
         self.bot = telegram.Bot(settings["token"])
